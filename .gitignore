@@ -1,6 +1,65 @@
-.DS_Store
-*.pyc
-*.egg-info
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
 *.swp
-tags
-trans_ms/docs/current
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Bench/Site specific
+sites/
+*.log
+*.pot
+*.pyc
+*.bench
+
+# Frappe/ERPNext
+public/dist/
+public/fonts/
+public/js/lib/
+public/less/
+*.ropeproject
