@@ -10,7 +10,7 @@ from frappe.model.document import Document
 from frappe import _
 import json
 from frappe.utils import nowdate
-from trans_ms.utlis.dimension import set_dimension
+from transport_management.utlis.dimension import set_dimension
 
 
 class TransportationOrder(Document):

@@ -1,6 +1,6 @@
 from . import __version__ as app_version
 
-app_name = "trans_ms"
+app_name = "transport_management"
 app_title = "Transport Management"
 app_publisher = "Aakvatech Limited"
 app_description = "App to Manage Transportation Business."
@@ -13,15 +13,15 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/trans_ms/css/trans_ms.css"
-# app_include_js = "/assets/trans_ms/js/trans_ms.js"
+# app_include_css = "/assets/transport_management/css/transport_management.css"
+# app_include_js = "/assets/transport_management/js/transport_management.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/trans_ms/css/trans_ms.css"
-# web_include_js = "/assets/trans_ms/js/trans_ms.js"
+# web_include_css = "/assets/transport_management/css/transport_management.css"
+# web_include_js = "/assets/transport_management/js/transport_management.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "trans_ms/public/scss/website"
+# website_theme_scss = "transport_management/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -56,14 +56,14 @@ app_license = "MIT"
 # Installation
 # ------------
 
-# before_install = "trans_ms.install.before_install"
-# after_install = "trans_ms.install.after_install"
+# before_install = "transport_management.install.before_install"
+# after_install = "transport_management.install.after_install"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "trans_ms.notifications.get_notification_config"
+# notification_config = "transport_management.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -102,39 +102,39 @@ app_license = "MIT"
 
 # scheduler_events = {
 # 	"all": [
-# 		"trans_ms.tasks.all"
+# 		"transport_management.tasks.all"
 # 	],
 # 	"daily": [
-# 		"trans_ms.tasks.daily"
+# 		"transport_management.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"trans_ms.tasks.hourly"
+# 		"transport_management.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"trans_ms.tasks.weekly"
+# 		"transport_management.tasks.weekly"
 # 	]
 # 	"monthly": [
-# 		"trans_ms.tasks.monthly"
+# 		"transport_management.tasks.monthly"
 # 	]
 # }
 
 # Testing
 # -------
 
-# before_tests = "trans_ms.install.before_tests"
+# before_tests = "transport_management.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "trans_ms.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "transport_management.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "trans_ms.task.get_dashboard_data"
+# 	"Task": "transport_management.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -168,7 +168,7 @@ user_data_fields = [
 # --------------------------------
 
 # auth_hooks = [
-# 	"trans_ms.auth.validate"
+# 	"transport_management.auth.validate"
 # ]
 
 fixtures = [

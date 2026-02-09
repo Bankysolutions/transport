@@ -3,13 +3,13 @@ from setuptools import setup, find_packages
 with open("requirements.txt") as f:
 	install_requires = f.read().strip().split("\n")
 
-# get version from __version__ variable in trans_ms/__init__.py
-from trans_ms import __version__ as version
+# get version from __version__ variable in transport_management/__init__.py
+from transport_management import __version__ as version
 
 setup(
-	name="trans_ms",
+	name="transport_management",
 	version=version,
-	description="App to Manage Transportation Business.",
+	description="Fleet Management System",
 	author="Aakvatech Limited",
 	author_email="info@aakvatech.com",
 	packages=find_packages(),

@@ -12,9 +12,9 @@ from frappe.model.mapper import get_mapped_doc
 import json
 from frappe.utils import nowdate, cstr, cint, flt, comma_or, now
 from frappe import _, msgprint
-from trans_ms.utlis.dimension import set_dimension
+from transport_management.utlis.dimension import set_dimension
 from erpnext.setup.utils import get_exchange_rate
-from trans_ms.transport_management.doctype.requested_payments.requested_payments import request_funds
+from transport_management.transport_management.doctype.requested_payments.requested_payments import request_funds
 
 class VehicleTrip(Document):
     # def before_insert(self):
@@ -34,7 +34,7 @@ class VehicleTrip(Document):
         #     "main_route"
         # ):
         #     consumption = frappe.db.get_value(
-        #         "Vehicle", self.get("vehicle"), "trans_ms_fuel_consumption"
+        #         "Vehicle", self.get("vehicle"), "transport_management_fuel_consumption"
         #     )
         #     route = frappe.db.get_value(
         #         "Trip Route", self.get("main_route"), "total_distance"
@@ -47,7 +47,7 @@ class VehicleTrip(Document):
         #     "return_route"
         # ):
         #     consumption = frappe.db.get_value(
-        #         "Vehicle", self.get("vehicle"), "trans_ms_fuel_consumption"
+        #         "Vehicle", self.get("vehicle"), "transport_management_fuel_consumption"
         #     )
         #     route = frappe.db.get_value(
         #         "Trip Route", self.get("return_route"), "total_distance"
@@ -182,14 +182,14 @@ class VehicleTrip(Document):
         for row in self.main_fuel_request:
             if row.status not in  ["Rejected", "Approved"]:
                 frappe.throw("<b>All fuel requests must be on either approved or rejected before submitting the trip</b>")
-            
+
             if row.status == "Approved" and not row.purchase_order:
                 frappe.throw("<b>All approved fuel requests must have Purchase Order before submitting the trip</b>")
-        
+
         for row in self.main_requested_funds:
             if row.request_status not in  ["Rejected", "Approved"]:
                 frappe.throw("<b>All fund requests must be on either approved or rejected before submitting the trip</b>")
-            
+
             if row.request_status == "Approved" and not row.journal_entry:
                 frappe.throw("<b>All approved fund requests must have a Journal Entry before submitting the trip</b>")
 
@@ -240,7 +240,7 @@ def create_vehicle_trip(**args):
         doc.created_trip = trip.name
         doc.status = "Processed"
         doc.save()
-        
+
         funds_args = {
             "reference_doctype": "Vehicle Trip",
             "reference_docname": trip.name,
@@ -256,7 +256,7 @@ def create_vehicle_trip(**args):
             vehicle = frappe.get_doc("Vehicle", args.vehicle)
             vehicle.status = "In Trip"
             # vehicle.hidden_status = 2
-            vehicle.trans_ms_current_trip = trip.name
+            vehicle.transport_management_current_trip = trip.name
             vehicle.save()
         return trip
 
@@ -321,26 +321,26 @@ def check_trip_status(**args):
 
 """@frappe.whitelist(allow_guest=True)
 def validate_route_inputs(**args):
-	args = frappe._dict(args)
+        args = frappe._dict(args)
 
-	frappe.msgprint("OOOOOKKKK")
+        frappe.msgprint("OOOOOKKKK")
 
-	#trip = frappe.db.get_value("Vehicle Trip", {"name": args.name})
-	#docs = frappe.get_doc("Vehicle Trip", trip)
-	#steps=docs.main_route_steps
+        #trip = frappe.db.get_value("Vehicle Trip", {"name": args.name})
+        #docs = frappe.get_doc("Vehicle Trip", trip)
+        #steps=docs.main_route_steps
 
-	if args.offloading_date and not args.loading_date:
-		frappe.msgprint("Loading Steps must be filled before offloading",raise_exeption==True)
+        if args.offloading_date and not args.loading_date:
+                frappe.msgprint("Loading Steps must be filled before offloading",raise_exeption==True)
 """
 
 
 # def validate_requested_funds(doc):
-# 	make_request = False
-# 	open_requests = []
-# 	for requested_fund in doc.main_requested_funds:
-# 		if requested_fund.request_status == "open":
-# 			make_request = True
-# 			open_requests.append(requested_fund)
+#       make_request = False
+#       open_requests = []
+#       for requested_fund in doc.main_requested_funds:
+#               if requested_fund.request_status == "open":
+#                       make_request = True
+#                       open_requests.append(requested_fund)
 
 
 @frappe.whitelist()
@@ -433,7 +433,7 @@ def create_stock_out_entry(doc, fuel_stock_out):
     fuel_item = frappe.get_value("Transport Settings", None, "fuel_item")
     if not fuel_item:
         frappe.throw(_("Please Set Fuel Item in Transport Settings"))
-    warehouse = frappe.get_value("Vehicle", doc.vehicle, "trans_ms_fuel_warehouse")
+    warehouse = frappe.get_value("Vehicle", doc.vehicle, "transport_management_fuel_warehouse")
     if not warehouse:
         frappe.throw(_("Please Set Fuel Warehouse in Vehicle"))
     item = {"item_code": fuel_item, "qty": float(fuel_stock_out)}
@@ -469,7 +469,7 @@ def create_purchase_order(request_doc, item):
     item = frappe._dict(json.loads(item))
     request_doc = frappe._dict(json.loads(request_doc))
     set_warehouse = frappe.get_value(
-        "Vehicle", request_doc.vehicle_plate_number, "trans_ms_fuel_warehouse"
+        "Vehicle", request_doc.vehicle_plate_number, "transport_management_fuel_warehouse"
     )
     if not set_warehouse:
         frappe.throw(_("Fuel Stock Warehouse not set in Vehicle"))

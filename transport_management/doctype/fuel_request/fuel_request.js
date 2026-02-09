@@ -49,13 +49,13 @@ frappe.ui.form.on('Fuel Request', {
     },
     make_purchase_order: function (frm) {
         frappe.model.open_mapped_doc({
-            method: "trans_ms.transport_management.doctype.fuel_request.fuel_request.make_purchase_order",
+            method: "transport_management.transport_management.doctype.fuel_request.fuel_request.make_purchase_order",
             frm: cur_frm
         });
     },
     make_stock_entry: function (frm) {
         frappe.model.open_mapped_doc({
-            method: "trans_ms.transport_management.doctype.fuel_request.fuel_request.make_stock_entry",
+            method: "transport_management.transport_management.doctype.fuel_request.fuel_request.make_stock_entry",
             frm: cur_frm
         });
     },
@@ -80,7 +80,7 @@ frappe.ui.form.on('Fuel Request Table', {
     //     if (row.purchase_order || row.status != "Approved") return;
     //     console.info("frm", frm);
     //     frappe.call({
-    //         method: "trans_ms.transport_management.doctype.fuel_request.fuel_request.create_purchase_order",
+    //         method: "transport_management.transport_management.doctype.fuel_request.fuel_request.create_purchase_order",
     //         args: {
     //             request_doc: frm.doc,
     //             item: row,
@@ -103,7 +103,7 @@ cur_frm.cscript.approve_request = function (frm) {
             function () {
                 $.each(selected['requested_fuel'], function (index, value) {
                     frappe.call({
-                        method: "trans_ms.transport_management.doctype.fuel_request.fuel_request.approve_request",
+                        method: "transport_management.transport_management.doctype.fuel_request.fuel_request.approve_request",
                         freeze: true,
                         args: {
                             request_doctype: "Fuel Request Table",

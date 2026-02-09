@@ -382,7 +382,7 @@ frappe.ui.form.on('Transportation Order', {
 			let rows = frm.doc.assign_transport.filter(i => selected.includes(i.name) && !i.invoice);
 			if (rows.length) {
 				frappe.call({
-					method: "trans_ms.transport_management.doctype.transportation_order.transportation_order.create_sales_invoice",
+					method: "transport_management.transport_management.doctype.transportation_order.transportation_order.create_sales_invoice",
 					args: {
 						doc: frm.doc,
 						rows: rows
@@ -538,7 +538,7 @@ frappe.ui.form.on("Transport Assignment", {
 				'The vehicle is En Route on another trip. Set as return cargo? If you select no, a new trip will be created',
 				function () {
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.vehicle_trip.vehicle_trip.create_vehicle_trip",
+						method: "transport_management.transport_management.doctype.vehicle_trip.vehicle_trip.create_vehicle_trip",
 						args: {
 							reference_doctype: "Transport Assignment",
 							reference_docname: doc.name,
@@ -560,7 +560,7 @@ frappe.ui.form.on("Transport Assignment", {
 		}
 		else {
 			frappe.call({
-				method: "trans_ms.transport_management.doctype.vehicle_trip.vehicle_trip.create_vehicle_trip",
+				method: "transport_management.transport_management.doctype.vehicle_trip.vehicle_trip.create_vehicle_trip",
 				args: {
 					reference_doctype: "Transport Assignment",
 					reference_docname: doc.name,

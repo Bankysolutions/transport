@@ -145,7 +145,7 @@ frappe.ui.form.on('Requested Payments', {
 
 	make_payment: function () {
 		frappe.model.open_mapped_doc({
-			method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.make_payment",
+			method: "transport_management.transport_management.doctype.requested_payments.requested_payments.make_payment",
 			frm: cur_frm
 		});
 	},
@@ -278,7 +278,7 @@ cur_frm.cscript.recommend_request = function (frm) {
 			function () {
 				$.each(selected['requested_funds'], function (index, value) {
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.recommend_request",
+						method: "transport_management.transport_management.doctype.requested_payments.requested_payments.recommend_request",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Funds Details",
@@ -346,7 +346,7 @@ cur_frm.cscript.approve_request = function (frm) {
 			function () {
 				$.each(selected['requested_funds'], function (index, value) {
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.approve_request",
+						method: "transport_management.transport_management.doctype.requested_payments.requested_payments.approve_request",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Funds Details",
@@ -380,7 +380,7 @@ cur_frm.cscript.reject_request = function (frm) {
 			function () {
 				$.each(selected['requested_funds'], function (index, value) {
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.reject_request",
+						method: "transport_management.transport_management.doctype.requested_payments.requested_payments.reject_request",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Funds Details",
@@ -414,7 +414,7 @@ cur_frm.cscript.accounts_approval = function (frm) {
 			function () {
 				$.each(selected['accounts_approval'], function (index, value) {
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.accounts_approval",
+						method: "transport_management.transport_management.doctype.requested_payments.requested_payments.accounts_approval",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Funds Accounts Table",
@@ -456,7 +456,7 @@ cur_frm.cscript.accounts_cancel = function (frm) {
 				$.each(selected['accounts_approval'], function (index, value) {
 					reload = false;
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.accounts_cancel",
+						method: "transport_management.transport_management.doctype.requested_payments.requested_payments.accounts_cancel",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Funds Accounts Table",
@@ -619,7 +619,7 @@ frappe.ui.form.on('Requested Funds Accounts Table', {
 		const row = locals[cdt][cdn];
 		if (row.journal_entry) return;
 		frappe.call({
-			method: "trans_ms.transport_management.doctype.vehicle_trip.vehicle_trip.create_fund_jl",
+			method: "transport_management.transport_management.doctype.vehicle_trip.vehicle_trip.create_fund_jl",
 			args: {
 				doc: frm.doc,
 				row: row
@@ -643,7 +643,7 @@ cur_frm.cscript.approve_request = function (frm) {
 			function () {
 				$.each(selected['requested_funds'], function (index, value) {
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.approve_request",
+						method: "transport_management.transport_management.doctype.requested_payments.requested_payments.approve_request",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Funds Details",
@@ -676,7 +676,7 @@ cur_frm.cscript.reject_request = function (frm) {
 			function () {
 				$.each(selected['requested_funds'], function (index, value) {
 					frappe.call({
-						method: "trans_ms.transport_management.doctype.requested_payments.requested_payments.reject_request",
+						method: "transport_management.transport_management.doctype.requested_payments.requested_payments.reject_request",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Funds Details",
